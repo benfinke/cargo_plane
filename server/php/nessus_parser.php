@@ -102,5 +102,8 @@ foreach($files as $file) {
 }
 	?>
     </p>
+      <blockquote>
+        <p>Return to the file <a href=/index.html>upload page</a>.</p>
+    </blockquote>  
 </body> 
 </html>
