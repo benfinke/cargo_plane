@@ -27,20 +27,6 @@ function isXML( $file ) {
 	}
 }
 
-$files = scandir('files/');
-
-foreach($files as $file) {
-	if (isXML($file)==TRUE)
-	{
-		system("python parser.py -i files/$file --csv nessus_csv/$file.csv");
-		move_uploaded_file($file, nessus_archive/$file);
-		$info = "File successfully parsed";
-	}
-	else {
-		$info = "There was a problem with the file $file .";
-
-	}
-}
 
 ?>
 
@@ -96,6 +82,23 @@ foreach($files as $file) {
     </blockquote>
     <p>Files:
 	<?php 
-	echo $info
+	echo $info;
+
+$files = scandir('files/');
+
+foreach($files as $file) {
+	if (isXML($file)==TRUE)
+	{
+		system("python parser.py -i files/$file --csv nessus_csv/$file.csv");
+		move_uploaded_file($file, nessus_archive/$file);
+		$info = "File successfully parsed";
+	}
+	else {
+		$info = "There was a problem with the file $file .";
+
+	}
+}
 	?>
     </p>
+</body> 
+</html>
