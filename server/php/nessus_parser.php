@@ -32,7 +32,7 @@ $files = scandir('files/');
 foreach($files as $file) {
 	if (isXML($file)==TRUE)
 	{
-		system("parser.py -i files/$file --csv nessus_csv/$file.csv");
+		system("python parser.py -i files/$file --csv nessus_csv/$file.csv");
 		move_uploaded_file($file, nessus_archive/$file);
 		$info = "File successfully parsed";
 	}
