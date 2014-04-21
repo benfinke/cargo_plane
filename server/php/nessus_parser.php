@@ -92,7 +92,7 @@ foreach($files as $file) {
 	if (isXML($file)==TRUE)
 	{
 		system("python parser.py -i files/$file --csv nessus_csv/$file.csv");
-		move_uploaded_file($file, nessus_archive/$file);
+		rename($file, nessus_archive/$file);
 		$info = "File successfully parsed";
 	}
 	else {
