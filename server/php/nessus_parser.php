@@ -89,20 +89,24 @@ function isXML( $file ) {
 $files = scandir('files/');
 
 foreach($files as $file) {
-	if (isXML($file)==TRUE)
-	{
-		exec(escapeshellcmd("python parser.py -i files/$file --csv nessus_csv/$file.csv"), $results);
-		if (!copy("files/$file", "nessus_archive/$file")){
-			echo "Error copying the file $file to the Nessus archive directory.";
+	if (substr("$file",-7) == ".nessus"){
+
+		if (isXML($file)==TRUE)
+		{
+			exec(escapeshellcmd("python parser.py -i files/$file --csv nessus_csv/$file.csv"), $results);
+			if (!copy("files/$file", "nessus_archive/$file")){
+				echo "Error copying the file $file to the Nessus archive directory.";
+			}
+			else {
+				unlink("files/$file");
+			}
+			$info = "File successfully parsed";
+			
 		}
 		else {
-			unlink("files/$file");
-		}
-		$info = "File successfully parsed";
-	}
-	else {
-		$info = "There was a problem with the file $file .";
+			$info = "There was a problem with the file $file .";
 
+		}
 	}
 }
 	?>
