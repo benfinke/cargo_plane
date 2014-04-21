@@ -92,11 +92,11 @@ foreach($files as $file) {
 	if (isXML($file)==TRUE)
 	{
 		system("python parser.py -i files/$file --csv nessus_csv/$file.csv");
-		if (!copy("$file", "nessus_archive/$file")){
+		if (!copy("files/$file", "nessus_archive/$file")){
 			echo "Error copying the file $file to the Nessus archive directory.";
 		}
 		else {
-			unlink($file);
+			unlink("files/$file");
 		}
 		$info = "File successfully parsed";
 	}
