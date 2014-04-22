@@ -30,5 +30,12 @@ function CheckLogin()
      return true;
 }
 
+function GetLoginSessionVar()
+{
+    $retvar = md5($this->rand_key);
+    $retvar = 'usr_'.substr($retvar,0,10);
+    return $retvar;
+}
+
 }
 ?>
