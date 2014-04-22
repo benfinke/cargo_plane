@@ -16,7 +16,7 @@ require_once("/cargo_plane/trunk/auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
-    $fgmembersite->RedirectToURL("/cargo_pane/trunk/login.php");
+    $fgmembersite->RedirectToURL("/cargo_plane/trunk/login.php");
     exit;
 }
 
