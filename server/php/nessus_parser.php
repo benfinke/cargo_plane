@@ -12,6 +12,14 @@
 
 error_reporting(E_ALL | E_STRICT);
 
+require_once("/cargo_plane/trunk/auth_config.php");
+
+if($fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("/cargo_pane/trunk/login.php");
+    exit;
+}
+
 function isXML( $file ) {                
     libxml_use_internal_errors(true); 
     $doc = new DOMDocument('1.0', 'utf-8'); 
@@ -92,7 +100,7 @@ foreach($files as $file) {
 	if (substr("$file",-7) == ".nessus"){
 		if (isXML($file)==TRUE)
 		{
-			exec("python parser.py -i files/$file --csv nessus_csv/$file.csv", $results);
+			exec(escapeshellcmd("python parser.py -i files/$file --csv nessus_csv/$file.csv"), $results);
 			if (!copy("files/$file", "nessus_archive/$file")){
 				echo "Error copying the file $file to the Nessus archive directory.";
 			}

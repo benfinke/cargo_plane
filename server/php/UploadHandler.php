@@ -10,6 +10,15 @@
  * http://www.opensource.org/licenses/MIT
  */
 
+require_once("/auth_config.php");
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
+
+ 
 class UploadHandler
 {
 

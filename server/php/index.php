@@ -11,5 +11,14 @@
  */
 
 error_reporting(E_ALL | E_STRICT);
+
+require_once("/cargo_plane/trunk/auth_config.php");
+
+if($fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("/cargo_pane/trunk/login.php");
+    exit;
+}
+
 require('UploadHandler.php');
 $upload_handler = new UploadHandler();
