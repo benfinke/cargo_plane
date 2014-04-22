@@ -1,6 +1,6 @@
 <?php
 
-require_once("/cargo_plane/trunk/auth_config.php");
+require_once("./auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
