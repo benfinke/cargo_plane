@@ -127,7 +127,7 @@ $service->login();
 <div class="container">
     <h1>Cargo Plane</h1>
     <h2 class="lead">Import net discovery and vulnerability files into Scout!</h2>
- 	<h2 class="lead">Please login to contiue:</h2>
+ 	<h2 class="lead">Please login to continue with your Scout credentials:</h2>
 
 	<form id='login' action='login.php' method='post' accept-charset='UTF-8'>
 	<fieldset >
