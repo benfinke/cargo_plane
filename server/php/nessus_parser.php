@@ -119,7 +119,7 @@ foreach($files as $file) {
 	?>
     </p>
       <blockquote>
-        <p>Return to the file <a href=/cargo_plane/trunk/index.html>upload page</a>.</p>
+        <p>Return to the Nessus file <a href=/cargo_plane/trunk/nessus.html>upload page</a>.</p>
     </blockquote>  
 </body> 
 </html>

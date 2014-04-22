@@ -4,7 +4,7 @@ require_once("/cargo_plane/trunk/auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
-    $fgmembersite->RedirectToURL("/cargo_pane/trunk/index.html");
+    $fgmembersite->RedirectToURL("/cargo_pane/trunk/nessus.html");
     exit;
 }
 
