@@ -2,9 +2,9 @@
 
 require_once("./auth_config.php");
 
-if($fgmembersite->CheckLogin())
+if(CheckLogin())
 {
-    $fgmembersite->RedirectToURL("/cargo_pane/trunk/nessus.html");
+    header("Location: /cargo_pane/trunk/nessus.html");
     exit;
 }
 
