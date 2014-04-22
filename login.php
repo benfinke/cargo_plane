@@ -50,8 +50,8 @@ require_once 'Splunk.php';
 $service = new Splunk_Service(array(
     'host' => '108.161.97.8',
     'port' => '8089',
-    'username' => '$username',
-    'password' => '$password',
+    'username' => "$username",
+    'password' => "$password",
 ));
 
 // Log into the Splunk service
