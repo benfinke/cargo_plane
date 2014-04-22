@@ -15,13 +15,7 @@ class FGMembersite
     var $rand_key;
     
     var $error_message;
-    
-    //-----Initialization -------
-    function FGMembersite()
-    {
-        $this->sitename = 'scout.entint.com';
-        $this->rand_key = '0iQx5oBk66oVZep';
-    }
+
 
 function CheckLogin()
 {

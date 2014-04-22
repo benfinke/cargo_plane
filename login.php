@@ -2,7 +2,9 @@
 
 require_once("./auth_config.php");
 
-if(CheckLogin())
+$fgmembersite = new FGMembersite();
+
+if($fgmembersite->CheckLogin())
 {
     header("Location: /cargo_pane/trunk/nessus.html");
     exit;
