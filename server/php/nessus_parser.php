@@ -12,11 +12,11 @@
 
 error_reporting(E_ALL | E_STRICT);
 
-require_once("/cargo_plane/trunk/auth_config.php");
+require_once("/cargo_plane/auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
-    $fgmembersite->RedirectToURL("/cargo_pane/trunk/login.php");
+    $fgmembersite->RedirectToURL("/cargo_pane/login.php");
     exit;
 }
 
@@ -119,7 +119,7 @@ foreach($files as $file) {
 	?>
     </p>
       <blockquote>
-        <p>Return to the Nessus file <a href=/cargo_plane/trunk/nessus.html>upload page</a>.</p>
+        <p>Return to the Nessus file <a href=/cargo_plane/nessus.html>upload page</a>.</p>
     </blockquote>  
 </body> 
 </html>
