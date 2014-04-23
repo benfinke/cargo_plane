@@ -75,7 +75,7 @@ system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/s
     <h2 class="lead">Import net discovery and vulnerability files into Scout!</h2>
  	<h2 class="lead">Please login to continue with your Scout credentials:</h2>
 
-	<form id='login' action='login.php' method='post' accept-charset='UTF-8'>
+	<form id='login' action='test-login.php' method='post' accept-charset='UTF-8'>
 	<fieldset >
 	<legend>Login</legend>
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
