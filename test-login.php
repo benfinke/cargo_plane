@@ -5,7 +5,7 @@ require_once("./auth_config.php");
 if(isset($_POST['submitted']))
 {
  
-system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/search/")
+system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/search/");
  
 }
 
