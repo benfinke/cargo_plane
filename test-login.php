@@ -4,10 +4,9 @@ require_once("./auth_config.php");
 
 if(isset($_POST['submitted']))
 {
-    if($fgmembersite->Login())
-    {
-        header("Location: /cargo_plane/nessus.html");
-    }
+ 
+system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/search/")
+ 
 }
 
 
