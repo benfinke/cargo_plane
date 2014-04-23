@@ -84,7 +84,7 @@ $service = new Splunk_Service(array(
 $service->login();
 $token = NULL;
 
-$token = $service.getToken();
+$token = $service->getToken();
  
  
     if($token == NULL)
