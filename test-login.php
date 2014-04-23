@@ -1,6 +1,6 @@
 <?php
 
-require_once("./auth_config.php");
+//require_once("./auth_config.php");
 
 if(isset($_POST['submitted']))
 {
