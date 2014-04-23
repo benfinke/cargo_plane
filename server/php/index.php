@@ -16,7 +16,7 @@ require_once("../../auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
-    $fgmembersite->RedirectToURL("/cargo_plane/login.php");
+    header("Location: /cargo_plane/login.php");
     exit;
 }
 
