@@ -81,10 +81,13 @@ $service = new Splunk_Service(array(
 ));
 
 // Log into the Splunk service
-$service->login(); 
+$service->login();
+$token = NULL;
+
+$token = $service.getToken();
  
  
-    if(!$service->login())
+    if($token == NULL)
     {
         $this->HandleError("Splunk login failed!");
         return false;
