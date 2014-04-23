@@ -74,7 +74,7 @@ require_once 'Splunk.php';
 
 // Create an instance of Splunk_Service to connect to a Splunk server
 $service = new Splunk_Service(array(
-    'host' => '127.0.01',
+    'host' => 'localhost',
     'port' => '8089',
     'username' => "$username",
     'password' => "$password",
