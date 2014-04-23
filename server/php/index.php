@@ -12,7 +12,7 @@
 
 error_reporting(E_ALL | E_STRICT);
 
-require_once("/cargo_plane/auth_config.php");
+require_once("../../auth_config.php");
 
 if($fgmembersite->CheckLogin())
 {
