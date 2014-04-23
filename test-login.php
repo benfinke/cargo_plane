@@ -8,7 +8,7 @@ if(isset($_POST['submitted']))
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/search/");
+system("curl -u $username:$password -k https://127.0.0.1:8089/servicesNS/admin/search/");
  
 }
 
