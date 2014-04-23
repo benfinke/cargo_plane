@@ -93,6 +93,10 @@ $service->login();
     return true;
 }
 
+    function HandleError($err)
+    {
+        $this->error_message .= $err."\r\n";
+    }
 
 }
 
