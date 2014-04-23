@@ -97,5 +97,7 @@ $service->login();
 }
 
 $fgmembersite = new FGMembersite();
+$fgmembersite->SetWebsiteName('scout.entint.com');
+$fgmembersite->SetRandomKey('qSRcVS6DrTzrPvr1a');
 
 ?>
