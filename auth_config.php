@@ -93,5 +93,9 @@ $service->login();
     return true;
 }
 
+
 }
+
+$fgmembersite = new FGMembersite();
+
 ?>
