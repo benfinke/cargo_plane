@@ -6,7 +6,7 @@ $fgmembersite = new FGMembersite();
 
 if($fgmembersite->CheckLogin())
 {
-    header("Location: /cargo_pane/trunk/nessus.html");
+    header("Location: /cargo_pane/nessus.html");
     exit;
 }
 

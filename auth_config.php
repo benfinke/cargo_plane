@@ -37,5 +37,61 @@ function GetLoginSessionVar()
     return $retvar;
 }
 
+function Login()
+{
+    if(empty($_POST['username']))
+    {
+        $this->HandleError("UserName is empty!");
+        return false;
+    }
+    
+    if(empty($_POST['password']))
+    {
+        $this->HandleError("Password is empty!");
+        return false;
+    }
+    
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    
+    if(!$this->CheckLoginInSplunk($username,$password))
+    {
+        return false;
+    }
+    
+    session_start();
+    
+    $_SESSION[$this->GetLoginSessionVar()] = $username;
+    
+    return true;
+}
+
+
+function CheckLoginInSplunk($username,$password)
+{
+// Import Splunk.php
+require_once 'Splunk.php';
+
+// Create an instance of Splunk_Service to connect to a Splunk server
+$service = new Splunk_Service(array(
+    'host' => '108.161.97.8',
+    'port' => '8089',
+    'username' => "$username",
+    'password' => "$password",
+));
+
+// Log into the Splunk service
+$service->login(); 
+ 
+ 
+    if(!$service->login())
+    {
+        $this->HandleError("Splunk login failed!");
+        return false;
+    }          
+    
+    return true;
+}
+
 }
 ?>
