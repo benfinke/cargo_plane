@@ -6,7 +6,7 @@ if(isset($_POST['submitted']))
 {
     if($fgmembersite->Login())
     {
-        $fgmembersite->RedirectToURL("nessus.html");
+        header("Location: nessus.html");
     }
 }
 
