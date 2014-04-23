@@ -5,6 +5,9 @@
 if(isset($_POST['submitted']))
 {
  
+$username = $_POST['username'];
+$password = $_POST['password'];
+
 system("curl -u $username:$password -k https://localhost:8089/servicesNS/admin/search/");
  
 }
