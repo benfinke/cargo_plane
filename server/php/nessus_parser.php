@@ -92,8 +92,7 @@ function isXML( $file ) {
     </blockquote>
     <p>Files:
 
-	<?php 
-	echo $info;
+<?php 
 
 $files = scandir('files/');
 
@@ -117,7 +116,7 @@ foreach($files as $file) {
 		}
 	}
 }
-	?>
+?>
     </p>
       <blockquote>
         <p>Return to the Nessus file <a href=/cargo_plane/nessus.html>upload page</a>.</p>
