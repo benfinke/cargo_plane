@@ -22,3 +22,5 @@ if($fgmembersite->CheckLogin())
 
 require('UploadHandler.php');
 $upload_handler = new UploadHandler();
+
+?>
