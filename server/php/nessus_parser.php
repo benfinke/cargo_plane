@@ -14,7 +14,7 @@ error_reporting(E_ALL | E_STRICT);
 
 require_once('../../auth_config.php');
 
-if($fgmembersite->CheckLogin())
+if(!$fgmembersite->CheckLogin())
 {
     header("Location: /cargo_plane/login.php");
     exit;
