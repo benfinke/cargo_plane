@@ -530,7 +530,7 @@ class nessus_parser:
                         if cve is not '':
                             print "\tCVE %s" % cve
 
-    def save_csv_report(self, filename, cvss_min='4.0', cvss_max='10.0', only_local=False, delim=','):
+    def save_csv_report(self, filename, cvss_min='0.0', cvss_max='10.0', only_local=False, delim=','):
         """
         Save extracted information into csv file format
         """
@@ -574,19 +574,20 @@ class nessus_parser:
         for host in self._results.keys():
             info = []
             #DATE
-            info.append(self._results[host][0]['scan_start'])
+            #info.append(self._results[host][0]['scan_start'])
             # ID
-            info.append(counter_id)
+            #info.append(vuln['plugin_ID'])
+            #info.append(counter_id)
             # IP
-            info.append(host)
+            #info.append(host)
             # HOSTNAME
-            info.append(self._results[host][0]['hostname'])
+            #info.append(self._results[host][0]['hostname'])
             # OS
-            info.append(self._results[host][0]['os'])
+            #info.append(self._results[host][0]['os'])
 
             # Sort vulnerabilities by CVSS score
             for vuln in sorted(self._results[host][1:], key=lambda cvss: float(cvss['cvss_base_score']), reverse=True):
-                info = info[0:4]
+                info = []
                 cvss = vuln['cvss_base_score']
                 if cvss is not "":
                     # Apply ONLY_LOCAL filter
@@ -599,6 +600,13 @@ class nessus_parser:
                             counter_local += 1
                         else:
                             counter_remote += 1
+
+                        #Moved the details on the host to the vuln loop
+                        info.append(self._results[host][0]['scan_start'])
+                        info.append(vuln['plugin_id'])
+                        info.append(host)
+                        info.append(self._results[host][0]['hostname'])
+                        info.append(self._results[host][0]['os'])
 
                         # PORT
                         port = vuln['port']
