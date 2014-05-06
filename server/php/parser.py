@@ -544,6 +544,7 @@ class nessus_parser:
         writer = csv.writer(open(filename, 'wb'), delimiter=delim)
         # Print CVS header
         writer.writerow([
+            "Start of Event"
             "Date",
             "Plugin ID",
             "IP",
@@ -573,6 +574,7 @@ class nessus_parser:
         # Loop hosts
         for host in self._results.keys():
             info = []
+            start_of_line = "||||"
             #DATE
             #info.append(self._results[host][0]['scan_start'])
             # ID
@@ -602,6 +604,7 @@ class nessus_parser:
                             counter_remote += 1
 
                         #Moved the details on the host to the vuln loop
+                        info.append(start_of_line)
                         info.append(self._results[host][0]['scan_start'])
                         info.append(vuln['plugin_id'])
                         info.append(host)
