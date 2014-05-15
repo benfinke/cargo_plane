@@ -547,8 +547,8 @@ class nessus_parser:
             "Start of Event",
             "Date",
             "Plugin ID",
-            "IP",
             "HOST",
+            "DNS Name",
             "OPERATING SYSTEM",
             "PORT", "PROTOCOL",
             "NAME",
@@ -691,7 +691,7 @@ if __name__ == "__main__":
                          )
     cmdline.add_argument("--min-cvss",
                          metavar="[min]",
-                         default="4.0",
+                         default="0.0",
                          help="Filter vulnerabilities from minimum CVSS.",
                          )
     cmdline.add_argument("--max-cvss",
@@ -761,4 +761,3 @@ if __name__ == "__main__":
 
     # Exit successfully
     exit(0)
-
