@@ -544,7 +544,7 @@ class nessus_parser:
         writer = csv.writer(open(filename, 'wb'), delimiter=delim)
         # Print CVS header
         writer.writerow([
-            "Start of Event"
+            "Start of Event",
             "Date",
             "Plugin ID",
             "IP",
