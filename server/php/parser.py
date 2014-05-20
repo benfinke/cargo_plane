@@ -540,7 +540,7 @@ class nessus_parser:
                         if cve is not '':
                             print "\tCVE %s" % cve
 
-    def save_csv_report(self, filename, cvss_min='0.0', cvss_max='10.0', only_local=False, delim='|'):
+    def save_csv_report(self, filename, cvss_min='0.0', cvss_max='10.0', only_local=False, delim='|', include_header=False):
         """
         Save extracted information into csv file format
         """
@@ -553,23 +553,24 @@ class nessus_parser:
             filename += '.csv'
         writer = csv.writer(open(filename, 'wb'), delimiter=delim)
         # Print CVS header
-        writer.writerow([
-            "Start of Event",
-            "Date",
-            "Plugin ID",
-            "Host",
-            "DNS Name",
-            "Operating System",
-            "Port", "Protocol",
-            "Name",
-            "Synopsis",
-            "Description",
-            "Solution",
-            "CVSS",
-            "Risk",
-            "CVE",
-            "Plugin Output"
-        ])
+        if include_header == True:
+            writer.writerow([
+                "Start of Event",
+                "Date",
+                "Plugin ID",
+                "Host",
+                "DNS Name",
+                "Operating System",
+                "Port", "Protocol",
+                "Name",
+                "Synopsis",
+                "Description",
+                "Solution",
+                "CVSS",
+                "Risk",
+                "CVE",
+                "Plugin Output"
+            ])
 #        writer.writerow([
 #            "ID",
 #            "IP",
