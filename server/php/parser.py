@@ -540,7 +540,7 @@ class nessus_parser:
                         if cve is not '':
                             print "\tCVE %s" % cve
 
-    def save_csv_report(self, filename, cvss_min='0.0', cvss_max='10.0', only_local=False, delim=','):
+    def save_csv_report(self, filename, cvss_min='0.0', cvss_max='10.0', only_local=False, delim='|'):
         """
         Save extracted information into csv file format
         """
