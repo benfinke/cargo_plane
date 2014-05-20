@@ -213,6 +213,8 @@ class nessus_parser:
                         'exploit_available': '',
                         'metasploit':        '',
                         'cve':               '',
+                        'synopsis':          '',
+                        'plugin_ouuput':     '',
                         }
 
                     # Extract generic vulnerability information
@@ -222,6 +224,8 @@ class nessus_parser:
                     vuln['protocol'] = item.getAttribute('protocol')
                     vuln['description'] = item.getAttribute('description')
                     vuln['service_name'] = item.getAttribute('svc_name')
+                    vuln['synopsis'] = item.getAttribute('synopsis')
+                    vuln['plugin_output'] = item.getAttribute('plugin_output')
 
                     # No another information about vulnerability, continue!
                     if len(item.childNodes) == 0: continue
@@ -233,6 +237,12 @@ class nessus_parser:
 
                         if details.nodeName == 'solution':
                             vuln['solution'] = details.childNodes[0].nodeValue
+
+                        if details.nodeName == 'synopsis':
+                            vuln['synopsis'] = details.childNodes[0].nodeValue
+
+                        if details.nodeName == 'plugin_output':
+                            vuln['plugin_output'] = details.childNodes[0].nodeValue
 
                         if details.nodeName == 'plugin_type':
                             vuln['plugin_type'] = details.childNodes[0].nodeValue
@@ -547,16 +557,18 @@ class nessus_parser:
             "Start of Event",
             "Date",
             "Plugin ID",
-            "HOST",
+            "Host",
             "DNS Name",
-            "OPERATING SYSTEM",
-            "PORT", "PROTOCOL",
-            "NAME",
-            "DESCRIPTION",
+            "Operating System",
+            "Port", "Protocol",
+            "Name",
+            "Synopsis",
+            "Description",
             "Solution",
             "CVSS",
             "Risk",
-            "CVE"
+            "CVE",
+            "Plugin Output"
         ])
 #        writer.writerow([
 #            "ID",
@@ -620,12 +632,25 @@ class nessus_parser:
                         info.append(vuln['protocol'])
                         # VULN NAME
                         info.append(vuln['plugin_name'])
+                        # VULN Synopsis
+                        info.append(vuln['synopsis'])
                         # VULN DESC
                         info.append(vuln['description'])
                         # REMEDIATION
                         info.append(vuln['solution'])
                         # CVSS SCORE
                         info.append(cvss)
+                        # Risk is derived from CVSS
+                        risk = ""
+                        if float(cvss) >= 7:
+                            risk = "High"
+                        elif (float(cvss) >= 4 and float(cvss) < 7):
+                            risk = "Medium"
+                        elif (float(cvss) > 0 and float(cvss) < 4):
+                            risk = "Low"
+                        else:
+                            risk = "None"
+                        info.append(risk)
                         # CVSS VECTOR (Remove 'CVSS#' preamble)
                         #vector = vuln['cvss_vector']
                         #if vector.find("#") != -1:
@@ -635,18 +660,9 @@ class nessus_parser:
                             #else:
                                 #vector = vuln['cvss_vector']
                         #info.append(vector)
-                        # Risk Metric
-                        if cvss >= 7:
-                            risk = "High"
-                        elif (cvss >= 4 and cvss < 7):
-                            risk = "Medium"
-                        elif (cvss > 0 and cvss < 4):
-                            risk = "Low"
-                        else:
-                            risk = "None"
-                        info.append(risk)
                         # CVE
                         info.append(vuln['cve'])
+                        info.append(vuln['plugin_output'])
 
                         writer.writerow([item.encode("utf-8") if isinstance(item, basestring) else item for item in info])
                         counter_vulns += 1
