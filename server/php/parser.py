@@ -555,7 +555,7 @@ class nessus_parser:
             "DESCRIPTION",
             "Solution",
             "CVSS",
-            "CVSS VECTOR",
+            "Risk",
             "CVE"
         ])
 #        writer.writerow([
@@ -627,14 +627,24 @@ class nessus_parser:
                         # CVSS SCORE
                         info.append(cvss)
                         # CVSS VECTOR (Remove 'CVSS#' preamble)
-                        vector = vuln['cvss_vector']
-                        if vector.find("#") != -1:
-                            vector = vector.split("#")
-                            if len(vector) > 1:
-                                vector = vector[1]
-                            else:
-                                vector = vuln['cvss_vector']
-                        info.append(vector)
+                        #vector = vuln['cvss_vector']
+                        #if vector.find("#") != -1:
+                            #vector = vector.split("#")
+                            #if len(vector) > 1:
+                                #vector = vector[1]
+                            #else:
+                                #vector = vuln['cvss_vector']
+                        #info.append(vector)
+                        # Risk Metric
+                        if cvss >= 7:
+                            risk = "High"
+                        elif (cvss >= 4 and cvss < 7):
+                            risk = "Medium"
+                        elif (cvss > 0 and cvss < 4):
+                            risk = "Low"
+                        else:
+                            risk = "None"
+                        info.append(risk)
                         # CVE
                         info.append(vuln['cve'])
 
