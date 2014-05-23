@@ -632,13 +632,17 @@ class nessus_parser:
                         # PROTOCOL
                         info.append(vuln['protocol'])
                         # VULN NAME
-                        info.append(vuln['plugin_name'])
+                        clean_plugin_name = vuln['plugin_name'].replace('|','')
+                        info.append(clean_plugin_name)
                         # VULN Synopsis
-                        info.append(vuln['synopsis'])
+                        clean_synopsis = vuln['synopsis'].replace('|','')
+                        info.append(clean_synopsis)
                         # VULN DESC
-                        info.append(vuln['description'])
+                        clean_description = vuln['description'].replace('|','')
+                        info.append(clean_description)
                         # REMEDIATION
-                        info.append(vuln['solution'])
+                        clean_solution = vuln['solution'].replace('|','')
+                        info.append(clean_solution)
                         # CVSS SCORE
                         info.append(cvss)
                         # Risk is derived from CVSS
@@ -663,7 +667,8 @@ class nessus_parser:
                         #info.append(vector)
                         # CVE
                         info.append(vuln['cve'])
-                        info.append(vuln['plugin_output'])
+                        clean_plugin_output = vuln['plugin_output'].replace('|','')
+                        info.append(clean_plugin_output)
 
                         writer.writerow([item.encode("utf-8") if isinstance(item, basestring) else item for item in info])
                         counter_vulns += 1
