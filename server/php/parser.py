@@ -587,7 +587,7 @@ class nessus_parser:
         # Loop hosts
         for host in self._results.keys():
             info = []
-            start_of_line = "||||"
+            start_of_line = "START_OF_EVENT"
             #DATE
             #info.append(self._results[host][0]['scan_start'])
             # ID
@@ -709,7 +709,7 @@ if __name__ == "__main__":
     cmdline.add_argument("--delim",
                          metavar="[delim]",
                          help="Use custom delimiter value to split CSV information.",
-                         default=',',
+                         default='|',
                          )
     cmdline.add_argument("--local",
                          action="store_true",

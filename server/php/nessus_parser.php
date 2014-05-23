@@ -100,7 +100,7 @@ foreach($files as $file) {
 	if (substr("$file",-7) == ".nessus"){
 		if (isXML($file)==TRUE)
 		{
-			exec(escapeshellcmd("python parser.py -i files/$file --csv nessus_csv/$file.csv --delim '|'"), $results);
+			exec(escapeshellcmd("python parser.py -i files/$file --csv nessus_csv/$file.csv"), $results);
 			if (!copy("files/$file", "nessus_archive/$file")){
 				echo "Error copying the file $file to the Nessus archive directory.";
 			}
