@@ -632,16 +632,16 @@ class nessus_parser:
                         # PROTOCOL
                         info.append(vuln['protocol'])
                         # VULN NAME
-                        clean_plugin_name = vuln['plugin_name'].replace('|','')
+                        clean_plugin_name = vuln['plugin_name'].replace(',',';')
                         info.append(clean_plugin_name)
                         # VULN Synopsis
-                        clean_synopsis = vuln['synopsis'].replace('|','')
+                        clean_synopsis = vuln['synopsis'].replace(',',';')
                         info.append(clean_synopsis)
                         # VULN DESC
-                        clean_description = vuln['description'].replace('|','')
+                        clean_description = vuln['description'].replace(',',';')
                         info.append(clean_description)
                         # REMEDIATION
-                        clean_solution = vuln['solution'].replace('|','')
+                        clean_solution = vuln['solution'].replace(',',';')
                         info.append(clean_solution)
                         # CVSS SCORE
                         info.append(cvss)
@@ -667,7 +667,7 @@ class nessus_parser:
                         #info.append(vector)
                         # CVE
                         info.append(vuln['cve'])
-                        clean_plugin_output = vuln['plugin_output'].replace('|','')
+                        clean_plugin_output = vuln['plugin_output'].replace(',',';')
                         info.append(clean_plugin_output)
 
                         writer.writerow([item.encode("utf-8") if isinstance(item, basestring) else item for item in info])
@@ -714,7 +714,7 @@ if __name__ == "__main__":
     cmdline.add_argument("--delim",
                          metavar="[delim]",
                          help="Use custom delimiter value to split CSV information.",
-                         default='|',
+                         default=',',
                          )
     cmdline.add_argument("--local",
                          action="store_true",
